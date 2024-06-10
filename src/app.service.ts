@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
@@ -17,4 +18,15 @@ export class AppService {
       gender: 'Male',
     };
   }
+
+  // get sepcific user using param
+  getSpecificUser(userId: number): object {
+    return {
+        id: userId,
+        name: 'Raiyan Al Sultan',
+        age: 24,
+        gender: 'Male',
+    };
+  }
+
 }
