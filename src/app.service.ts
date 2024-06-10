@@ -36,7 +36,16 @@ export class AppService {
       name: userName,
       gender: 'Male',
       age: '24'
-    }
+    };
+  }
+
+  // get user by name and id
+  getByNameId( userId: number, userName : string): object{
+    return {
+      id: userId,
+      name: userName,
+      gender: 'Male'
+    };
   }
 
 }

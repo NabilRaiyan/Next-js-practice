@@ -1,4 +1,5 @@
-import { Controller, Get, Param } from '@nestjs/common';
+/* eslint-disable prettier/prettier */
+import { Controller, Get, Param, Query } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller()
@@ -30,5 +31,11 @@ export class AppController {
   @Get('/getUserByName/:name')
   getUserByName(@Param('name') name: string): object {
     return this.appService.getUserByName(name);
+  }
+
+  // get user by name and id using Query
+  @Get('getByNameId')
+  getUserByNameId(@Query('id') id: number, @Query('name') name: string): object{
+    return this.appService.getByNameId(id, name);
   }
 }
