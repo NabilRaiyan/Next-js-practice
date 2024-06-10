@@ -29,4 +29,14 @@ export class AppService {
     };
   }
 
+  // get user by name using param
+  getUserByName(userName : string): object {
+    return {
+      id: 2,
+      name: userName,
+      gender: 'Male',
+      age: '24'
+    }
+  }
+
 }
