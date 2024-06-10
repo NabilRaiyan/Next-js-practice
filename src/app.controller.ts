@@ -33,6 +33,7 @@ export class AppController {
     return this.appService.getUserByName(name);
   }
 
+  
   // get user by name and id using Query
   @Get('getByNameId')
   getUserByNameId(@Query('id') id: number, @Query('name') name: string): object{
