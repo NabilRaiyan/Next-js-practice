@@ -24,7 +24,7 @@ export class DoctorService{
             
         }
     }
-
+    
     addDoctor(myObj: object): object{
         console.log(myObj);
         return myObj;

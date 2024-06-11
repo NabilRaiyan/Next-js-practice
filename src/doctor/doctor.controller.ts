@@ -38,6 +38,7 @@ export class DoctorController{
         return this.doctorService.updatePassword(password, id);
     }
 
+    // delete doctor by id
     @Delete('deleteDocById')
     deleteDocById(@Query('id') id: number): object{
         return this.doctorService.deleteDocById(id);
