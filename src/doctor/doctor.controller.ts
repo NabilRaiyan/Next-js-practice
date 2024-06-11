@@ -19,7 +19,22 @@ export class DoctorController{
 
     @Post('addDoctor')
     addDoctor(@Body() myObj: object): object{
-        
+
         return this.doctorService.addDoctor(myObj);
+    }
+
+    @Put('updateDocInfo')
+    updateDocInfo(@Body() myObj: object): object{
+        return this.doctorService.updateDocInfo(myObj);
+    }
+
+    @Patch('forgotPassword/:id')
+    forgotPassword(@Body() password: object, @Param('id') id: number): object{
+        return this.doctorService.updatePassword(password, id);
+    }
+
+    @Delete('deleteDocById/:id')
+    deleteDocById(@Query() id: number): object{
+        return this.doctorService.deleteDocById(id);
     }
 }

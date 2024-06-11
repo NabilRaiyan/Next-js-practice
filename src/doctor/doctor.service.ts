@@ -21,9 +21,15 @@ export class DoctorService{
         console.log(myObj);
         return myObj;
     }
-    
+
     updateDocInfo(myObj: object):object{
         console.log(myObj);
         return myObj;
     }
+
+    updatePassword(Userpassword: object, id:number): object{
+        return {message: "Password is Updated ", id,   body:Userpassword};
+    }
+
+    
 }
