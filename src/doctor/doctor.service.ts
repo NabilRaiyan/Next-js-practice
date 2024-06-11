@@ -16,6 +16,7 @@ export class DoctorService{
         };
     }
 
+    // get doctor by name
     getDocByName(docName: string): object{
         return {
             id: 1,
@@ -24,7 +25,7 @@ export class DoctorService{
             
         }
     }
-    
+    // add new doctor
     addDoctor(myObj: object): object{
         console.log(myObj);
         return myObj;
