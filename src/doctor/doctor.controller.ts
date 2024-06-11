@@ -7,6 +7,7 @@ import { DoctorService } from "./doctor.service";
 @Controller('doctor')
 export class DoctorController{
     constructor(private readonly doctorService: DoctorService) {}
+    // default route
     @Get('home')
     getDoctor(): object{
         return this.doctorService.getDoctor();

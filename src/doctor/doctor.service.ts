@@ -5,7 +5,15 @@ import { Injectable } from "@nestjs/common";
 @Injectable()
 export class DoctorService{
     getDoctor(): object {
-        return {Message: 'Hello my name is Doctor Raiyan'};
+        return {
+            Doctors: {
+                doc1:"Raiyan",
+                doc2:"Sultan",
+                doc3:"Jhon",
+                doc4:"Abraham",
+                doc5:"Yousuf"
+            }
+        };
     }
 
     getDocByName(docName: string): object{
@@ -31,7 +39,7 @@ export class DoctorService{
         return {message: "Password is Updated ", id,   body:Userpassword};
     }
 
-    
+
     deleteDocById(id: number): object{
         return {
             message: "Successfully deleted the doctor",
