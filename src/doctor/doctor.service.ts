@@ -4,6 +4,7 @@ import { Injectable } from "@nestjs/common";
 
 @Injectable()
 export class DoctorService{
+    // get all doctor
     getDoctor(): object {
         return {
             Doctors: {
