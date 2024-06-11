@@ -13,22 +13,26 @@ export class DoctorController{
         return this.doctorService.getDoctor();
     }
 
+    // get doctor by name
     @Get('getDocByName/:name')
     getDoctorByName(@Param('name') name: string): object{
         return this.doctorService.getDocByName(name);
     }
 
+    // add new doctor
     @Post('addDoctor')
     addDoctor(@Body() myObj: object): object{
 
         return this.doctorService.addDoctor(myObj);
     }
 
+    // update doctor information
     @Put('updateDocInfo')
     updateDocInfo(@Body() myObj: object): object{
         return this.doctorService.updateDocInfo(myObj);
     }
 
+    // update password
     @Patch('forgotPassword/:id')
     forgotPassword(@Body() password: object, @Param('id') id: number): object{
         return this.doctorService.updatePassword(password, id);
