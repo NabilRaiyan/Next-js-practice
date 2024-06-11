@@ -1,12 +1,25 @@
+/* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class AdminService {
-  getAdmin(): object {
+  getadmin(): object {
     return { Message: 'Hello from Admin' };
   }
 
   getAdminByName(adminName: string): object {
     return { greeting: 'Hello ' + adminName };
+  }
+
+  getAdmin(myobj: object): object {
+    return myobj;
+  }
+
+  addAdmin(myobj: object): object {
+    return myobj;
+  }
+
+  updateAdmin(myobj: object, id: number): object {
+    return { message: 'Updated admin id: ' + id, body:myobj };
   }
 }

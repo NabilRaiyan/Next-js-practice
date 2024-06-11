@@ -11,6 +11,7 @@ export class AppService {
     return 3 + 5;
   }
 
+
   getUser(): object {
     return {
       name: 'Raiyan Al Sultan',
