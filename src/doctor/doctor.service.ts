@@ -37,6 +37,7 @@ export class DoctorService{
         return myObj;
     }
 
+    // update password method
     updatePassword(Userpassword: object, id:number): object{
         return {message: "Password is Updated ", id,   body:Userpassword};
     }
