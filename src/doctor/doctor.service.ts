@@ -17,6 +17,7 @@ export class DoctorService{
         };
     }
 
+    
     // get doctor by name
     getDocByName(docName: string): object{
         return {
