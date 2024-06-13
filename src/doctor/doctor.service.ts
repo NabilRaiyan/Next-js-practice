@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Injectable } from "@nestjs/common";
 
-
+// doctor service class
 @Injectable()
 export class DoctorService{
     // get all doctor
