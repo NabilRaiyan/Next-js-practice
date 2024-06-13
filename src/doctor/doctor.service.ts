@@ -43,7 +43,7 @@ export class DoctorService{
         return {message: "Password is Updated ", id,   body:Userpassword};
     }
 
-
+    // delete cotor by id method
     deleteDocById(id: number): object{
         return {
             message: "Successfully deleted the doctor",
