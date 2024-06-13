@@ -32,6 +32,7 @@ export class DoctorService{
         return myObj;
     }
 
+    // update doctor information method
     updateDocInfo(myObj: object):object{
         console.log(myObj);
         return myObj;
