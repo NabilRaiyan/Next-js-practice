@@ -43,5 +43,5 @@ export class AppController {
   getUserByNameId(@Query('id') id: number, @Query('name') name: string): object{
     return this.appService.getByNameId(id, name);
   }
-  
+
 }
