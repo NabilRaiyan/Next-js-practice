@@ -16,7 +16,7 @@ export class AppController {
   getBye(): string{
     return this.appService.getBye();
   }
-
+  
   @Get('/add')
   getAdd(): number {
     return this.appService.getAddition();
