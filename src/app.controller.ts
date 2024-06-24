@@ -2,7 +2,7 @@
 import { Controller, Get, Param, Query } from '@nestjs/common';
 import { AppService } from './app.service';
 
-// 
+// controller
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
@@ -16,7 +16,7 @@ export class AppController {
   getBye(): string{
     return this.appService.getBye();
   }
-  
+
   @Get('/add')
   getAdd(): number {
     return this.appService.getAddition();
