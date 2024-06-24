@@ -11,6 +11,11 @@ export class AppController {
     return this.appService.getHello();
   }
 
+  @Get('/hello')
+  getBye(): string{
+    return this.appService.getBye();
+  }
+
   @Get('/add')
   getAdd(): number {
     return this.appService.getAddition();

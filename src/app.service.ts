@@ -7,10 +7,13 @@ export class AppService {
     return 'Hello World!';
   }
 
+  getBye():string {
+    return "Hello world !! Bye world";
+  }
+
   getAddition(): number {
     return 3 + 5;
   }
-
 
   getUser(): object {
     return {
