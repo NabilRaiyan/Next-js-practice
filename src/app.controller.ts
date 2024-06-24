@@ -37,7 +37,6 @@ export class AppController {
   getUserByName(@Param('name') name: string): object {
     return this.appService.getUserByName(name);
   }
-
   
   // get user by name and id using Query
   @Get('getByNameId')
