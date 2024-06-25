@@ -36,7 +36,7 @@ export class DoctorController{
         return this.doctorService.updateDocInfo(myObj);
     }
 
-    // upload doctor image
+    // upload doctor NID image
     @Post('upload')
     @UseInterceptors(FileInterceptor('file',
         { fileFilter: (req, file, cb) => {
