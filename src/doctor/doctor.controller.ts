@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Controller, Get, Param, Query, Post, Put, Delete, Patch, Body, UsePipes, ValidationPipe, UseInterceptors, UploadedFile } from "@nestjs/common";
+import { Controller, Res, Get, Param, Query, Post, Put, Delete, Patch, Body, UsePipes, ValidationPipe, UseInterceptors, UploadedFile } from "@nestjs/common";
 import { DoctorService } from "./doctor.service";
 import { DoctorDto } from "./doctor.dto";
 import { FileInterceptor } from "@nestjs/platform-express";
@@ -35,6 +35,34 @@ export class DoctorController{
     updateDocInfo(@Body() myObj: object): object{
         return this.doctorService.updateDocInfo(myObj);
     }
+
+    // upload doctor image
+    @Post('upload')
+    @UseInterceptors(FileInterceptor('file',
+        { fileFilter: (req, file, cb) => {
+            if (file.originalname.match(/^.*\.(jpg|webp|png|jpeg)$/))
+            cb(null, true);
+            else {
+            cb(new MulterError('LIMIT_UNEXPECTED_FILE', 'image'), false);
+            }
+            },
+            limits: { fileSize: 2097152 },
+            storage:diskStorage({
+            destination: './uploads',
+            filename: function (req, file, cb) {
+            cb(null,Date.now()+file.originalname)
+            },
+            })
+            }))
+            uploadFile(@UploadedFile() file: Express.Multer.File) {
+            console.log(file);
+        }
+    
+        // @Get('/getimage/:name')
+        // getImages(@Param('name') name, @Res() res) {
+        // res.sendFile(name,{ root: './uploads' })
+        // }
+   
 
     // update password
     @Patch('forgotPassword/:id')

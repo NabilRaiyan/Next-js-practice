@@ -19,7 +19,7 @@ export class DoctorDto {
 
   @IsNotEmpty()
   @IsString()
-  @MinLength(15, {
+  @MinLength(10, {
     message: 'Minimun length of NID number should be 15',
   })
   @MaxLength(17, {
