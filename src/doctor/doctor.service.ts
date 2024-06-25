@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { Injectable } from "@nestjs/common";
+import { DoctorDto } from "./doctor.dto";
 
 // doctor service class
 @Injectable()
@@ -27,7 +28,7 @@ export class DoctorService{
         }
     }
     // add new doctor
-    addDoctor(myObj: object): object{
+    addDoctor(myObj: DoctorDto): object{
         console.log(myObj);
         return myObj;
     }

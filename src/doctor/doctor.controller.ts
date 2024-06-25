@@ -1,7 +1,8 @@
 /* eslint-disable prettier/prettier */
-import { Controller, Get, Param, Query, Post, Put, Delete, Patch, Body } from "@nestjs/common";
+import { Controller, Get, Param, Query, Post, Put, Delete, Patch, Body, UsePipes, ValidationPipe } from "@nestjs/common";
 import { DoctorService } from "./doctor.service";
-
+import { DoctorDto } from "./doctor.dto";
+ 
 
 
 @Controller('doctor')
@@ -21,9 +22,10 @@ export class DoctorController{
 
     // add new doctor
     @Post('addDoctor')
-    addDoctor(@Body() myObj: object): object{
-
-        return this.doctorService.addDoctor(myObj);
+    @UsePipes(new ValidationPipe())
+    addDoctor(@Body() data: DoctorDto): object{
+        console.log(data);
+        return this.doctorService.addDoctor(data);
     }
 
     // update doctor information
