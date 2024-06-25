@@ -1,7 +1,9 @@
 /* eslint-disable prettier/prettier */
-import { Controller, Get, Param, Query, Post, Put, Delete, Patch, Body, UsePipes, ValidationPipe } from "@nestjs/common";
+import { Controller, Get, Param, Query, Post, Put, Delete, Patch, Body, UsePipes, ValidationPipe, UseInterceptors, UploadedFile } from "@nestjs/common";
 import { DoctorService } from "./doctor.service";
 import { DoctorDto } from "./doctor.dto";
+import { FileInterceptor } from "@nestjs/platform-express";
+import { MulterError, diskStorage } from "multer";
  
 
 
