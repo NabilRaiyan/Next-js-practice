@@ -13,28 +13,28 @@ export class DoctorController{
     // default route
     @Get('home')
     getDoctor(): object{
-        return this.doctorService.getDoctor();
+        return this.doctorService.findAll();
     }
 
-    // get doctor by name
-    @Get('getDocByName/:name')
-    getDoctorByName(@Param('name') name: string): object{
-        return this.doctorService.getDocByName(name);
-    }
+    // // get doctor by name
+    // @Get('getDocByName/:name')
+    // getDoctorByName(@Param('name') name: string): object{
+    //     return this.doctorService.getDocByName(name);
+    // }
 
     // add new doctor
     @Post('addDoctor')
     @UsePipes(new ValidationPipe())
     addDoctor(@Body() data: DoctorDto): object{
         console.log(data);
-        return this.doctorService.addDoctor(data);
+        return this.doctorService.createDoctor(data);
     }
 
-    // update doctor information
-    @Put('updateDocInfo')
-    updateDocInfo(@Body() myObj: object): object{
-        return this.doctorService.updateDocInfo(myObj);
-    }
+    // // update doctor information
+    // @Put('updateDocInfo')
+    // updateDocInfo(@Body() myObj: object): object{
+    //     return this.doctorService.updateDocInfo(myObj);
+    // }
 
     // upload doctor NID image
     @Post('upload')
@@ -64,15 +64,15 @@ export class DoctorController{
         // }
    
 
-    // update password
-    @Patch('forgotPassword/:id')
-    forgotPassword(@Body() password: object, @Param('id') id: number): object{
-        return this.doctorService.updatePassword(password, id);
-    }
+    // // update password
+    // @Patch('forgotPassword/:id')
+    // forgotPassword(@Body() password: object, @Param('id') id: number): object{
+    //     return this.doctorService.updatePassword(password, id);
+    // }
 
-    // delete doctor by id
-    @Delete('deleteDocById')
-    deleteDocById(@Query('id') id: number): object{
-        return this.doctorService.deleteDocById(id);
-    }
+    // // delete doctor by id
+    // @Delete('deleteDocById')
+    // deleteDocById(@Query('id') id: number): object{
+    //     return this.doctorService.deleteDocById(id);
+    // }
 }

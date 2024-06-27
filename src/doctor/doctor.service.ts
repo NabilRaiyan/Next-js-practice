@@ -10,6 +10,11 @@ import { InjectRepository } from "@nestjs/typeorm";
 export class DoctorService{
     constructor(@InjectRepository(DoctorEntity) private readonly doctorRepository: Repository<DoctorEntity>){}
 
+    // create doctor 
+    async createDoctor(doctorEntity: DoctorDto): Promise<DoctorDto>{
+        return this.doctorRepository.save(doctorEntity);
+    }
+
     // // get all doctor
     // getDoctor(): object {
     //     return {
