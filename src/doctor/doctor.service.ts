@@ -20,6 +20,11 @@ export class DoctorService{
         return this.doctorRepository.find();
     }
 
+    // get specific doctor by id
+    async getDocById(docId: number): Promise<DoctorDto>{
+        return this.doctorRepository.findOneBy({id: docId});
+    }
+
     // // get all doctor
     // getDoctor(): object {
     //     return {

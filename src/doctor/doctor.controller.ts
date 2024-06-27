@@ -16,11 +16,20 @@ export class DoctorController{
         return this.doctorService.findAllDoctor();
     }
 
+
+    // get doctor by id
+    @Get('getDocById/:id')
+    getDoctorByName(@Param('id') id: number): object{
+        return this.doctorService.getDocById(id);
+    }
+
     // // get doctor by name
     // @Get('getDocByName/:name')
     // getDoctorByName(@Param('name') name: string): object{
     //     return this.doctorService.getDocByName(name);
     // }
+
+
 
     // add new doctor
     @Post('addDoctor')
