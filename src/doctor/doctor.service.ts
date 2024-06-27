@@ -15,6 +15,11 @@ export class DoctorService{
         return this.doctorRepository.save(doctorEntity);
     }
 
+    // find all the doctors 
+    async findAllDoctor(): Promise<DoctorDto[]>{
+        return this.doctorRepository.find();
+    }
+
     // // get all doctor
     // getDoctor(): object {
     //     return {

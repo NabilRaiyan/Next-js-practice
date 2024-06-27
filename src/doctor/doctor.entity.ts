@@ -13,5 +13,4 @@ export class DoctorEntity {
   password: string;
   @Column()
   gender: string;
-  
 }
