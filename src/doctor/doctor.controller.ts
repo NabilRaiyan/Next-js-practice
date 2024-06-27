@@ -11,10 +11,10 @@ import { MulterError, diskStorage } from "multer";
 export class DoctorController{
     constructor(private readonly doctorService: DoctorService) {}
     // default route
-    @Get('home')
-    getDoctor(): object{
-        return this.doctorService.findAll();
-    }
+    // @Get('home')
+    // getDoctor(): object{
+    //     return this.doctorService.findAll();
+    // }
 
     // // get doctor by name
     // @Get('getDocByName/:name')
