@@ -1,5 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
+// doctor table schema
 @Entity('doctor')
 export class DoctorEntity {
   @PrimaryGeneratedColumn()
