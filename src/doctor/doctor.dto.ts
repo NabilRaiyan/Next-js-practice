@@ -1,11 +1,4 @@
-import {
-  IsAlpha,
-  IsNotEmpty,
-  Matches,
-  MinLength,
-  IsString,
-  MaxLength,
-} from 'class-validator';
+import { IsAlpha, IsNotEmpty, Matches } from 'class-validator';
 
 export class DoctorDto {
   @IsAlpha()
