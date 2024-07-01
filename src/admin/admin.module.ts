@@ -4,6 +4,7 @@ import { AdminService } from './admin.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AdminEntity } from './admin.entity';
 
+// creating module
 @Module({
   imports: [TypeOrmModule.forFeature([AdminEntity])],
   controllers: [AdminController],
