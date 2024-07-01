@@ -1,6 +1,8 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('admin')
+
+// exporting admin entity schema
 export class AdminEntity {
   @PrimaryGeneratedColumn()
   id: number;
