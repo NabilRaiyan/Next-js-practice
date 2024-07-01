@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 
+// creating admin service 
 @Injectable()
 export class AdminService {
   getadmin(): object {
