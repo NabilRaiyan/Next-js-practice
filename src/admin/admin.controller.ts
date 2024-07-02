@@ -23,6 +23,7 @@ export class AdminController {
     return this.adminService.getAdmin(myobj);
   }
 
+  // add admin
   @Post('addAdmin')
   addAdmin(@Body() myobj: object): object {
     return this.adminService.getAdmin(myobj);
