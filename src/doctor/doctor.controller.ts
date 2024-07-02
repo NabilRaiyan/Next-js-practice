@@ -6,7 +6,7 @@ import { FileInterceptor } from "@nestjs/platform-express";
 import { MulterError, diskStorage } from "multer";
  
 
-
+// doctor controller
 @Controller('doctor')
 export class DoctorController{
     constructor(private readonly doctorService: DoctorService) {}
