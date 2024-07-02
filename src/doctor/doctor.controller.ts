@@ -15,8 +15,7 @@ export class DoctorController{
     getDoctor(): object{
         return this.doctorService.findAllDoctor();
     }
-
-
+    
     // get doctor by id
     @Get('getDocById/:id')
     getDoctorByName(@Param('id') id: number): object{
