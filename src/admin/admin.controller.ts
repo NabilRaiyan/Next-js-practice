@@ -5,6 +5,7 @@ import { AdminService } from './admin.service';
 export class AdminController {
   constructor(private readonly adminService: AdminService) {}
 
+  // home route
   @Get('home')
   getadmin(): object {
     return this.adminService.getadmin();
