@@ -10,6 +10,7 @@ export class AdminController {
     return this.adminService.getadmin();
   }
 
+  // get admin by name
   @Get('adminByName/:name')
   getAdminByName(@Param('name') name: string) {
     return this.adminService.getAdminByName(name);
