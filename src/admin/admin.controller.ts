@@ -16,6 +16,7 @@ export class AdminController {
     return this.adminService.getAdminByName(name);
   }
 
+  // get admin
   @Get('getAdmin')
   getAdmin(@Body() myobj: object): object {
     return this.adminService.getAdmin(myobj);
