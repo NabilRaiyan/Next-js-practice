@@ -29,8 +29,6 @@ export class DoctorController{
     //     return this.doctorService.getDocByName(name);
     // }
 
-
-
     // add new doctor
     @Post('addDoctor')
     @UsePipes(new ValidationPipe())
