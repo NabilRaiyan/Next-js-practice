@@ -1,5 +1,6 @@
 import { IsAlpha, IsNotEmpty, Matches } from 'class-validator';
 
+//  creating doctor dto class
 export class DoctorDto {
   @IsAlpha()
   name: string;
