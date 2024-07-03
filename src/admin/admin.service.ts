@@ -23,6 +23,7 @@ export class AdminService {
     return myobj;
   }
 
+  // update admin information
   updateAdmin(myobj: object, id: number): object {
     return { message: 'Updated admin id: ' + id, body:myobj };
   }
