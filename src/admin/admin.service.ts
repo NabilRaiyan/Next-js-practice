@@ -8,10 +8,12 @@ export class AdminService {
     return { Message: 'Hello from Admin' };
   }
 
+  //  get admin by name
   getAdminByName(adminName: string): object {
     return { greeting: 'Hello ' + adminName };
   }
 
+  // 
   getAdmin(myobj: object): object {
     return myobj;
   }
