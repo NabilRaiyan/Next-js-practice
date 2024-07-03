@@ -13,7 +13,7 @@ export class AdminService {
     return { greeting: 'Hello ' + adminName };
   }
 
-  // 
+  // get admin information
   getAdmin(myobj: object): object {
     return myobj;
   }
