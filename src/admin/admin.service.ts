@@ -18,6 +18,7 @@ export class AdminService {
     return myobj;
   }
 
+  // add admin 
   addAdmin(myobj: object): object {
     return myobj;
   }
