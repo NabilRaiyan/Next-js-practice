@@ -1,4 +1,6 @@
 /* eslint-disable prettier/prettier */
+
+// import all the libraries
 import { Controller, Res, Get, Param, Query, Post, Put, Delete, Patch, Body, UsePipes, ValidationPipe, UseInterceptors, UploadedFile } from "@nestjs/common";
 import { DoctorService } from "./doctor.service";
 import { DoctorDto } from "./doctor.dto";
@@ -15,7 +17,7 @@ export class DoctorController{
     getDoctor(): object{
         return this.doctorService.findAllDoctor();
     }
-    
+
     // get doctor by id
     @Get('getDocById/:id')
     getDoctorByName(@Param('id') id: number): object{
