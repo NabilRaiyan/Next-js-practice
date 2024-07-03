@@ -5,6 +5,7 @@ export class DoctorDto {
   @IsAlpha()
   name: string;
 
+  // checking if the mail is matched with proper convension
   @IsNotEmpty()
   @Matches(/^[A-Za-z]+@doc\.xyz/, {
     message: 'Email should contain @doc.xyz',
