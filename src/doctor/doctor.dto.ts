@@ -2,7 +2,7 @@ import { IsAlpha, IsNotEmpty, Matches } from 'class-validator';
 
 //  creating doctor dto class
 export class DoctorDto {
-  
+  // checking if the name is only alphabet
   @IsAlpha()
   name: string;
 
