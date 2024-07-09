@@ -29,6 +29,7 @@ export class AdminController {
     return this.adminService.getAdmin(myobj);
   }
 
+  
   @Put('updateAdmin/:id')
   updateAdmin(@Body() myobj: object, @Param('id') id: number): object {
     return this.adminService.updateAdmin(myobj, id);
