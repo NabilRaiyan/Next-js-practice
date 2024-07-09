@@ -54,6 +54,7 @@ export class DoctorController{
             cb(new MulterError('LIMIT_UNEXPECTED_FILE', 'image'), false);
             }
             },
+            // file size
             limits: { fileSize: 2097152 },
             storage:diskStorage({
             destination: './uploads',
