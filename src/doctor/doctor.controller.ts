@@ -63,6 +63,7 @@ export class DoctorController{
             },
             })
             }))
+            // upl
             uploadFile(@UploadedFile() file: Express.Multer.File) {
             console.log(file);
         }
