@@ -16,5 +16,3 @@ export class DoctorEntity {
   @Column()
   gender: string;
 }
-
-
