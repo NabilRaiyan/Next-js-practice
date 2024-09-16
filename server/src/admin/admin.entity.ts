@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn } from 'server/node_modules/typeorm';
 
 @Entity('admin')
 // exporting admin entity schema

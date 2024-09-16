@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Injectable } from "@nestjs/common";
 import { DoctorDto } from "./doctor.dto";
-import { Repository } from "typeorm";
+import { Repository } from "server/node_modules/typeorm";
 import { DoctorEntity } from "./doctor.entity";
 import { InjectRepository } from "@nestjs/typeorm";
 

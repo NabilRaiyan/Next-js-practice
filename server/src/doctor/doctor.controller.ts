@@ -5,7 +5,7 @@ import { Controller, Res, Get, Param, Query, Post, Put, Delete, Patch, Body, Use
 import { DoctorService } from "./doctor.service";
 import { DoctorDto } from "./doctor.dto";
 import { FileInterceptor } from "@nestjs/platform-express";
-import { MulterError, diskStorage } from "multer";
+import { MulterError, diskStorage } from "server/node_modules/@types/multer";
  
 
 // doctor controller

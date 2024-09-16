@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn } from 'server/node_modules/typeorm';
 
 // doctor table schema
 @Entity('doctor')
