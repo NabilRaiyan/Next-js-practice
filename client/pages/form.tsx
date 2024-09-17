@@ -20,7 +20,7 @@ export default function Form() {
       <form className="flex flex-col w-[50%] justify-center text-center" onSubmit={handleSubmit((data)=>{
         console.log(data)
       })}>
-        {/* full name */}
+        {/* full name for user */}
         <input 
         className="border text-lg border-orange-400 mt-4 ml-4 mr-5 rounded pl-3 pt-1" 
         placeholder="Enter Full Name" 
