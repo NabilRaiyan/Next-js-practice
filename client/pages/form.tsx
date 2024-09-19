@@ -70,7 +70,7 @@ export default function Form() {
         </select>
         <p className="text-red-500 text-sm mt-2 ml-4">{errors.gender?.message}</p>
 
-        <input type="submit" className="bg-orange-300 text-gray-800 mt-4 rounded border-gray-700 w-[100px] p-1 self-center" type="submit" />
+        <input type="submit" className="bg-orange-300 text-gray-800 mt-4 rounded border-gray-700 w-[100px] p-1 self-center"/>
         
       </form>
     </div>
