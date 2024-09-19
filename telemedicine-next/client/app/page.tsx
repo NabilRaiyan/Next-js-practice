@@ -2,6 +2,13 @@ import Nav from "@/components/Nav";
 import Header from "@/components/Header";
 import MiddleSection from "@/components/MiddleSection";
 import Footer from "@/components/Footer";
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'DocLine || Home',
+  description:
+    'Home Page',
+};
 
 export default function Home() {
   return (
