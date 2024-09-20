@@ -59,9 +59,18 @@ export default function Login() {
     // create prescription for patient
     async function createPrescription(){
         try{
+            const prescriptionData = {
+                prescription_details: "New Data for prescription",
+            }
+            const response = await axios.post('http://localhost:3000/prescription/createPrescription/3', prescriptionData, {
+                withCredentials: true,
+                params: doctorId
+            });
+            console.log(response)
 
-        }catch(error){
-            
+        }
+        catch(error){
+            console.log(error)
         }
     }
 
@@ -91,6 +100,8 @@ export default function Login() {
           </ul>
         </div>
       )}
+      <br/>
+      <button onClick={createPrescription}>Create Presctiption</button>
     </div>
   );
 }
