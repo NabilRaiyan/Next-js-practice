@@ -21,6 +21,7 @@ export default function Login() {
   const [doctorId, setDoctorId] = useState<string | null>(null);
   const [appointmentData, setAppointmentData] = useState<Appointment[]>([]); // Initialize as an empty array
 
+    // getting all appointment for doctor   
   async function getAppointment() {
     try {
       const appResponse = await axios.get('http://localhost:3000/appointments/appointmentHistory', {
