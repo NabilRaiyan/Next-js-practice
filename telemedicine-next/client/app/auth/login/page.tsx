@@ -19,21 +19,7 @@ export default function Login() {
 
   const [doctorData, setDoctorData] = useState<Doctor | null>(null);
   const [doctorId, setDoctorId] = useState<string | null>(null);
-  const [appointmentData, setAppointmentData] = useState<Appointment[]>([]); // Initialize as an empty array
-
-    // getting all appointment for doctor   
-  async function getAppointment() {
-    try {
-      const appResponse = await axios.get('http://localhost:3000/appointments/appointmentHistory', {
-        withCredentials: true, // This ensures cookies are sent with the request
-        params: { doctorId },
-      });
-      setAppointmentData(appResponse.data);
-      console.log(appResponse.data); // Log the fetched appointment data
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  
 
     // handle login   
   async function handleLogin() {
@@ -48,32 +34,14 @@ export default function Login() {
       const data = response.data.doctor;
       setDoctorData(data);
       setDoctorId(data.d_id);
-      console.log(data.d_id);
+      console.log(doctorId);
       console.log(data);
-      await getAppointment(); // Wait for appointments to be fetched
     } catch (error) {
       console.log(error);
     }
   }
 
-    // create prescription for patient
-    async function createPrescription(){
-        try{
-            const prescriptionData = {
-                prescription_details: "New Data for prescription",
-            }
-            const response = await axios.post('http://localhost:3000/prescription/createPrescription/3', prescriptionData, {
-                withCredentials: true,
-                params: doctorId
-            });
-            console.log(response)
-
-        }
-        catch(error){
-            console.log(error)
-        }
-    }
-
+    
 
   return (
     <div>
@@ -86,22 +54,7 @@ export default function Login() {
           <p><strong>Specialization:</strong> {doctorData.d_specialize}</p>
         </div>
       )}
-      {appointmentData.length > 0 && (
-        <div>
-          <h3>Appointment Information</h3>
-          <ul>
-            {appointmentData.map((appointment) => (
-              <li key={appointment.appointment_id}>
-                <p><strong>Appointment ID:</strong> {appointment.appointment_id}</p>
-                <p><strong>Status:</strong> {appointment.appointment_status}</p>
-                <p><strong>Notes:</strong> {appointment.consultation_notes}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-      <br/>
-      <button onClick={createPrescription}>Create Presctiption</button>
+      
     </div>
   );
 }
