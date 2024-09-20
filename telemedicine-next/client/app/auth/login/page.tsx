@@ -56,6 +56,16 @@ export default function Login() {
     }
   }
 
+    // create prescription for patient
+    async function createPrescription(){
+        try{
+
+        }catch(error){
+            
+        }
+    }
+
+
   return (
     <div>
       <button onClick={handleLogin}>Login</button>
