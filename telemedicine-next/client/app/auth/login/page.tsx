@@ -41,8 +41,6 @@ export default function Login() {
     }
   }
 
-    
-
   return (
     <div>
       <button onClick={handleLogin}>Login</button>
