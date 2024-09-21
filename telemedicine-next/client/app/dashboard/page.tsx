@@ -12,6 +12,7 @@ import axios from 'axios';
 //       'My Dashboard',
 //   };
 
+// dashboard
 export default function page() {
 
   // const [appointmentData, setAppointmentData] = useState<Appointment[]>([]); // Initialize as an empty array
