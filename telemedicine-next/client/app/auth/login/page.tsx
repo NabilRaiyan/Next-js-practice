@@ -13,6 +13,7 @@ export default function Login() {
     d_specialize: string;
   }
 
+  // appointment interface
   interface Appointment {
     appointment_id: string;
     appointment_status: string;
