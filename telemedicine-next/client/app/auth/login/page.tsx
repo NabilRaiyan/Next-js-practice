@@ -41,6 +41,7 @@ export default function Login() {
     }
   }
 
+  // rendering doc info
   return (
     <div>
       <button onClick={handleLogin}>Login</button>
