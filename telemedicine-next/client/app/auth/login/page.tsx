@@ -7,6 +7,8 @@ import axios from 'axios';
 
 export default function Login() {
 
+  const {register, handleSubmit, formState: {errors}, reset} = useForm();
+
   // doctor interface
   interface Doctor {
     d_id: string;
@@ -27,38 +29,40 @@ export default function Login() {
   
 
     // handle login   
-  async function handleLogin() {
-    try {
-      const loginData = {
-        u_email: 'fatima@gmail.com',
-        u_password: 'qwerty123',
-      };
-      const response = await axios.post('http://localhost:3000/users/login', loginData, {
-        withCredentials: true, // Include credentials in login request
-      });
-      const data = response.data.doctor;
-      setDoctorData(data);
-      setDoctorId(data.d_id);
-      console.log(doctorId);
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  // async function handleLogin() {
+  //   try {
+  //     const loginData = {
+  //       u_email: 'fatima@gmail.com',
+  //       u_password: 'qwerty123',
+  //     };
+  //     const response = await axios.post('http://localhost:3000/users/login', loginData, {
+  //       withCredentials: true, // Include credentials in login request
+  //     });
+  //     const data = response.data.doctor;
+  //     setDoctorData(data);
+  //     setDoctorId(data.d_id);
+  //     console.log(doctorId);
+  //     console.log(data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 
   // rendering doc info
   return (
     <div>
-      <button onClick={handleLogin}>Login</button>
-      {doctorData && (
-        <div>
-          <h2>Doctor Information</h2>
-          <p><strong>Name:</strong> {doctorData.d_name}</p>
-          <p><strong>Chamber Address:</strong> {doctorData.d_chamber_address}</p>
-          <p><strong>Specialization:</strong> {doctorData.d_specialize}</p>
-        </div>
-      )}
-      
+        <form onSubmit={
+          handleSubmit((data)=>{
+            console.log(data)
+          })
+        }>
+          <input {...register('email')} placeholder='Enter email' />
+          {errors.email && <p className="error">{errors.email.message}</p>}
+
+          <input {...register('password')} placeholder='Enter password' type='password' />
+          <input type='submit' />
+
+        </form>
     </div>
   );
 }
