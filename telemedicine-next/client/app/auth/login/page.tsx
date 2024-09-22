@@ -56,7 +56,6 @@ export default function Login() {
           })
         }>
           <input {...register('email')} placeholder='Enter email' />
-
           <input {...register('password')} placeholder='Enter password' type='password' />
           <input type='submit' />
 
