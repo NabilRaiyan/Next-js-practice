@@ -12,7 +12,6 @@ export default function Logout(){
         try{
             const response = await axios.delete('http://localhost:3000/users/logout');
             router.push('/');
-            
 
         }catch(error){
             console.log(error)

@@ -1,14 +1,17 @@
+"use client"
 
 import Dashboard from "@/components/Dashboard";
 import Nav from "@/components/Nav";
+import withSessionGuard from "@/components/SessionGuard";
 
-export default function page(){
+// const ProtectedDashboard = withSessionGuard(Dashboard); // Wrap Dashboard with the session guard
 
-  return(
-    <div>
-      <Nav loggedInState={true}/>
-      <Dashboard/>
-    </div>
-   
-  )
+export default function Page() {
+    return (
+        <div>
+            <Nav loggedInState={true} />
+            {/* <ProtectedDashboard /> Use the wrapped component */}
+            <Dashboard/>
+        </div>
+    );
 }
