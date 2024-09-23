@@ -77,22 +77,62 @@ useEffect(() => {
     getAppointment(); // Call the function to fetch appointments when doctorId changes
   }, [doctorId]);
 
+
+  // <h2>Appointments:</h2>
+  //     {appointmentData.length > 0 ? (
+  //       appointmentData.map((appointment) => (
+  //         <div key={appointment.appointment_id}>
+  //           <p>Status: {appointment.appointment_status}</p>
+  //           <p>Notes: {appointment.consultation_notes}</p>
+  //           <p>Patient Name: {appointment.patient.p_name}</p> {/* Display patient name */}
+  //           <p>Patient Phone: {appointment.patient.p_phone}</p> 
+  //         </div>
+  //       ))
+  //     ) : (
+  //       <p>No appointments found.</p>
+  //     )}
+
+  const approvedAppointments = appointmentData.filter(appointment => appointment.appointment_status === 'Approved');
+  const pendingAppointments = appointmentData.filter(appointment => appointment.appointment_status === 'Pending');
+
     
   return (
     <div className='flex flex-col gap-2'>
-      <h2>Appointments:</h2>
-      {appointmentData.length > 0 ? (
-        appointmentData.map((appointment) => (
-          <div key={appointment.appointment_id}>
-            <p>Status: {appointment.appointment_status}</p>
-            <p>Notes: {appointment.consultation_notes}</p>
-            <p>Patient Name: {appointment.patient.p_name}</p> {/* Display patient name */}
-            <p>Patient Phone: {appointment.patient.p_phone}</p> 
-          </div>
-        ))
-      ) : (
-        <p>No appointments found.</p>
-      )}
+      <h1>Welcome doctor, {}</h1>
+      <div className='grid grid-cols-3 gap-5 p-2 m-6 mt-7'>
+        <div className='text-lg bg-amber-400 p-4 rounded font-serif font-semibold text-slate-700'>
+          <h3 className='mb-4'>Total Appointment</h3>
+          {
+            appointmentData.length > 0 ? (
+              <p className='text-[1.4rem] bg-orange-100 w-[50px] p-3 rounded-full ml-4'>{appointmentData.length}</p>
+            ) : (
+              <p>No Appointment</p>
+            )
+          }
+        </div>
+        <div className='text-lg bg-emerald-300 p-4 rounded font-serif font-semibold text-slate-700'>
+          <h3 className='mb-4'>Approved Appointment</h3>
+
+          {
+            appointmentData.length > 0 ? (
+              <p className='text-[1.4rem] bg-emerald-50 w-[50px] p-3 rounded-full ml-4'>{approvedAppointments.length}</p>
+            ) : (
+              <p>No Appointment</p>
+            )
+          }
+        </div>
+        <div className='text-lg bg-red-400 p-4 rounded font-serif font-semibold text-slate-700'>
+          <h3 className='mb-4'>Pending Appointment</h3>
+
+          {
+            appointmentData.length > 0 ? (
+              <p className='text-[1.4rem] bg-red-100 w-[50px] p-3 rounded-full ml-4'>{pendingAppointments.length}</p>
+            ) : (
+              <p>No Appointment</p>
+            )
+          }
+        </div>
+      </div>
     </div>
   )
 }
