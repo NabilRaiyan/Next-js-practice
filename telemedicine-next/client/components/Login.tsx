@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import {useForm} from 'react-hook-form';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
 
 import axios from 'axios';
 export default function Login() {
@@ -26,12 +25,7 @@ export default function Login() {
     d_specialize: string;
   }
 
-  // appointment interface
-  interface Appointment {
-    appointment_id: string;
-    appointment_status: string;
-    consultation_notes: string;
-  }
+ 
 
   interface loginInputObj{
     email: string,
@@ -60,7 +54,8 @@ export default function Login() {
         console.log(doctorId);
         console.log(doctorData);
         if(doctorId !== null){
-          router.push(`/dashboard?docId=${doctorId}`)
+          router.push(`/dashboard/?doctorId=${doctorId}`);
+          // router.push('/dashboard')
         }
         
       } catch (error) {

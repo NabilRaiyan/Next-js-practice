@@ -1,9 +1,14 @@
 
 import Dashboard from "@/components/Dashboard";
+import Nav from "@/components/Nav";
 
-export default function DashboardPage(){
+export default function page(){
 
   return(
-    <Dashboard/>
+    <div>
+      <Nav loggedInState={true}/>
+      <Dashboard/>
+    </div>
+   
   )
 }
