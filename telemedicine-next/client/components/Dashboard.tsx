@@ -5,11 +5,12 @@ import Nav from '@/components/Nav';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-
+import { Table, TableBody, TableHeader, TableCell, TableRow, TableColumn } from '@nextui-org/table';
 
 interface Patient {
     p_name: string;
     p_phone: string;
+    p_medical_history: string
 
 }
  // appointment interface
@@ -25,8 +26,10 @@ interface Patient {
 export default function Dashboard(){
 
   const router = useRouter();
+
   const [doctorId, setDoctorId] = useState<string | null>(null);
   const [doctorName, setDocName] = useState<string | null>(null);
+
 
   useEffect(() => {
     const url = new URL(window.location.href);
@@ -93,6 +96,7 @@ useEffect(() => {
   //       <p>No appointments found.</p>
   //     )}
 
+  // show approved and pending appointments if any
   const approvedAppointments = appointmentData.filter(appointment => appointment.appointment_status === 'Approved');
   const pendingAppointments = appointmentData.filter(appointment => appointment.appointment_status === 'Pending');
 
@@ -134,6 +138,9 @@ useEffect(() => {
           }
         </div>
       </div>
+
+      {/* Next table */}
+    
     </div>
   )
 }
