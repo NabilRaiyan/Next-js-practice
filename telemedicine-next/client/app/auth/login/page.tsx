@@ -6,7 +6,13 @@ import {useForm} from 'react-hook-form';
 import axios from 'axios';
 export default function Login() {
 
-  const {register, handleSubmit, formState: {errors}, reset} = useForm();
+  const {register, handleSubmit, formState: {errors}, reset} = useForm({
+    defaultValues:
+    {
+      email: "",
+      password: ""
+    }
+  });
 
   // doctor interface
   interface Doctor {
@@ -23,8 +29,15 @@ export default function Login() {
     consultation_notes: string;
   }
 
-  const [doctorData, setDoctorData] = useState<Doctor | null>(null);
-  const [doctorId, setDoctorId] = useState<string | null>(null);
+  interface loginInputObj{
+    email: string,
+    password: string
+
+  }
+
+  // const [doctorData, setDoctorData] = useState<Doctor | null>(null);
+  // const [doctorId, setDoctorId] = useState<string | null>(null);
+  const [loginInput, setLoginInput] = useState<loginInputObj | null>(null);
   
 
     // handle login   
@@ -47,16 +60,28 @@ export default function Login() {
   //   }
   // }
 
+
+  const onSubmit = (data: loginInputObj) =>{
+    setLoginInput(data)
+    console.log(loginInput?.email)
+    console.log(loginInput?.email)
+
+  }
+
   // rendering doc info
   return (
     <div>
-        <form onSubmit={
-          handleSubmit((data)=>{
-            console.log(data)
-          })
-        }>
-          <input {...register('email')} placeholder='Enter email' />
-          <input {...register('password')} placeholder='Enter password' type='password' />
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <input {...register("email", {required: "Please enter email", 
+                              pattern: {value: /^[A-Za-z0-9._%+-]+@gmail\.com$/,
+                                message: "Please enter a valid email address"
+                              }
+                              })} placeholder='Enter email' />
+            <p>{errors && errors.email?.message}</p>
+          <input {...register("password", {required: "Please enter password"})} 
+                              placeholder='Enter password' type='password' />
+          <p>{errors && errors.password?.message}</p>
+
           <input type='submit' />
 
         </form>
