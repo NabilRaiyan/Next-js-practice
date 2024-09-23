@@ -54,7 +54,7 @@ export default function Login() {
         console.log(doctorId);
         console.log(doctorData);
         if(doctorId !== null){
-          router.push(`/dashboard/?doctorId=${doctorId}`);
+          router.push(`/dashboard/?doctorId=${doctorId}&doctorName=${data.d_name}`);
           // router.push('/dashboard')
         }
         

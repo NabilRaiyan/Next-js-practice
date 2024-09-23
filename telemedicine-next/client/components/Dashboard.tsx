@@ -4,8 +4,6 @@ import React from 'react'
 import Nav from '@/components/Nav';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-
-
 import { useRouter } from 'next/navigation';
 
 
@@ -28,11 +26,14 @@ export default function Dashboard(){
 
   const router = useRouter();
   const [doctorId, setDoctorId] = useState<string | null>(null);
+  const [doctorName, setDocName] = useState<string | null>(null);
 
   useEffect(() => {
     const url = new URL(window.location.href);
     const id = url.searchParams.get('doctorId');
+    const doctorName = url.searchParams.get('doctorName')
     setDoctorId(id);
+    setDocName(doctorName)
   }, []);
 
   console.log(doctorId);
@@ -98,9 +99,9 @@ useEffect(() => {
     
   return (
     <div className='flex flex-col gap-2'>
-      <h1>Welcome doctor, {}</h1>
+      <h1 className='ml-8 text-2xl font-sans mt-3 font-semibold'>Welcome doctor, {doctorName}</h1>
       <div className='grid grid-cols-3 gap-5 p-2 m-6 mt-7'>
-        <div className='text-lg bg-amber-400 p-4 rounded font-serif font-semibold text-slate-700'>
+        <div className='text-lg bg-amber-400 p-4 rounded font-serif font-semibold text-slate-700 shadow-lg'>
           <h3 className='mb-4'>Total Appointment</h3>
           {
             appointmentData.length > 0 ? (
@@ -110,7 +111,7 @@ useEffect(() => {
             )
           }
         </div>
-        <div className='text-lg bg-emerald-300 p-4 rounded font-serif font-semibold text-slate-700'>
+        <div className='text-lg bg-emerald-300 p-4 rounded font-serif font-semibold text-slate-700 shadow-lg'>
           <h3 className='mb-4'>Approved Appointment</h3>
 
           {
@@ -121,7 +122,7 @@ useEffect(() => {
             )
           }
         </div>
-        <div className='text-lg bg-red-400 p-4 rounded font-serif font-semibold text-slate-700'>
+        <div className='text-lg bg-red-400 p-4 rounded font-serif font-semibold text-slate-700 shadow-lg'>
           <h3 className='mb-4'>Pending Appointment</h3>
 
           {
