@@ -17,11 +17,13 @@ export default function Nav({loggedInState}: NavProps) {
         </div>
         <Link className='mt-3 hover:underline hover:text-gray-500' href="/">Home</Link>
         <Link className='mt-3 hover:underline hover:text-gray-500' href="#">About</Link>
-        <Link className='mt-3 hover:underline hover:text-gray-500' href="/dashboard">Dashboard</Link>
         
         {
         isLoggedIn ? (
+          <>
+          <Link className='mt-3 hover:underline hover:text-gray-500' href="/dashboard">Dashboard</Link>
           <Link className='mt-1 bg-blue-600 p-1 rounded px-3 text-white hover:text-black hover:bg-orange-50' href="/auth/logout">Sign Out</Link>
+          </>
         ) : (
         <Link className='mt-1 bg-blue-600 p-1 rounded px-3 text-white hover:text-black hover:bg-orange-50' href="/auth/login">Sign In</Link>
       )}
