@@ -215,6 +215,7 @@ async function getPatient() {
         </div>
       </div>
 
+      {/* Show all appointments  */}
       <div className='grid grid-cols-3 gap-3'>
       <div className='ml-6 bg-orange-100 rounded p-5 font-serif'>
         <h2 className='text-lg'>All Appointments:</h2>
