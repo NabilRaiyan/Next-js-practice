@@ -266,6 +266,7 @@ async function getPatient() {
         </div>
       </div>
 
+      {/* Show all patient  */}
       <div className='bg-emerald-100 p-2'>
         <div className='m-6 bg-orange-100 rounded p-5 font-serif'>
           <button onClick={getPatient} className='m-2 bg-cyan-100 p-2'>Show All Patient</button>
