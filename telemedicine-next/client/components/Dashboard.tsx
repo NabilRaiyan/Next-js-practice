@@ -4,6 +4,7 @@ import React from 'react'
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import {useForm} from 'react-hook-form'
 
 
 interface Patient {
@@ -36,6 +37,12 @@ interface Patient {
 
 // dashboard
 export default function Dashboard(){
+  const {register, handleSubmit, formState: {errors}, reset} = useForm({
+    defaultValues:
+    {
+      prescription_details: "",
+    }
+  });
 
   const router = useRouter();
 
@@ -300,15 +307,6 @@ async function getPatient() {
         )}
         </div>
       </div>
-
-      {/* <div>
-          <form>
-          <input placeholder='Prescription Details' />
-          <input type='submit'/>
-        </form>
-      </div> */}
-
-
     </div>
   )
 }
