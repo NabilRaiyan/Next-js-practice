@@ -130,7 +130,7 @@ async function getPatient() {
   async function updatePrescription(prescriptionId:number){
     try{
         const prescriptionData = {
-            prescription_details: "Updated Data",
+            prescription_details: "New Updated Data",
         }
         const response = await axios.put(`http://localhost:3000/prescription/updatePrescription/${prescriptionId}`, prescriptionData, {
             withCredentials: true,
@@ -300,6 +300,15 @@ async function getPatient() {
         )}
         </div>
       </div>
+
+      {/* <div>
+          <form>
+          <input placeholder='Prescription Details' />
+          <input type='submit'/>
+        </form>
+      </div> */}
+
+
     </div>
   )
 }

@@ -25,12 +25,9 @@ export default function Login() {
     d_specialize: string;
   }
 
- 
-
   interface loginInputObj{
     email: string,
     password: string
-
   }
 
   const [doctorData, setDoctorData] = useState<Doctor | null>(null);
@@ -53,7 +50,7 @@ export default function Login() {
         setDoctorId(data.d_id);
         console.log(doctorId);
         console.log(doctorData);
-        if(doctorId !== null){
+        if(doctorId !== null) {
           router.push(`/dashboard/?doctorId=${doctorId}&doctorName=${data.d_name}`);
           // router.push('/dashboard')
         }
@@ -67,7 +64,6 @@ export default function Login() {
     
   }
 
-
   const onSubmit = (data: loginInputObj) => {
     handleLogin(data); 
   };
@@ -75,19 +71,19 @@ export default function Login() {
 
   // rendering doc info
   return (
-    <div>
-        <form onSubmit={handleSubmit(onSubmit)}>
+    <div className='bg-cyan-200 text-xl font-sans m-7 p-3 w-[50%] rounded flex justify-center'>
+        <form onSubmit={handleSubmit(onSubmit)} className='p-3'>
           <input {...register("email", {required: "Please enter email", 
                               pattern: {value: /^[A-Za-z0-9._%+-]+@gmail\.com$/,
                                 message: "Please enter a valid email address"
                               }
-                              })} placeholder='Enter email' />
+                              })} placeholder='Enter email' className='m-3 rounded p-2'/>
             <p>{errors && errors.email?.message}</p>
           <input {...register("password", {required: "Please enter password"})} 
-                              placeholder='Enter password' type='password' />
+                              placeholder='Enter password' type='password' className='m-3 rounded p-2'/>
           <p>{errors && errors.password?.message}</p>
 
-          <button type='submit'>Login</button>
+          <button type='submit' className='bg-emerald-100 p-2 rounded ml-2'>Login</button>
 
         </form>
     </div>
