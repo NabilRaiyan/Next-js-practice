@@ -30,11 +30,6 @@ interface Patient {
 
   }
 
-  interface AddPrescription{
-    prescription_details: string,
-
-  }
-
 // dashboard
 export default function Dashboard(){
   const {register, handleSubmit, formState: {errors}, reset} = useForm({
