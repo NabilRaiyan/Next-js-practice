@@ -1,13 +1,13 @@
 "use client";
 
 import React from 'react'
-import Nav from '@/components/Nav';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Table, TableBody, TableHeader, TableCell, TableRow, TableColumn } from '@nextui-org/table';
+
 
 interface Patient {
+    p_id: number,
     p_name: string;
     p_phone: string;
     p_medical_history: string
@@ -19,6 +19,18 @@ interface Patient {
     appointment_status: string;
     consultation_notes: string;
     patient: Patient; 
+  }
+
+  interface Prescription{
+    prescription_id: number,
+    prescription_details: string,
+    created_at: Date
+    patient: Patient; 
+
+  }
+
+  interface AddPrescription{
+    prescription_details: string,
 
   }
 
@@ -43,6 +55,10 @@ export default function Dashboard(){
 
 
   const [appointmentData, setAppointmentData] = useState<Appointment[]>([]); // Initialize as an empty array
+  const [prescriptionData, setPrescriptionData] = useState<Prescription[]>([]); // Initialize as an empty array
+  const [patientData, setPatientData] = useState<Patient[]>([]); // Initialize as an empty array
+  const [patientPrescriptionData, setPatientPrescription] = useState<Prescription[]>([]); // Initialize as an empty array
+
 
     // getting all appointment for doctor   
   async function getAppointment() {
@@ -58,49 +74,102 @@ export default function Dashboard(){
     }
   }
 
+  useEffect(() => {
+      getAppointment(); 
+    }, [doctorId]);
 
-//   // create prescription for patient
-//   async function createPrescription(){
-//     try{
-//         const prescriptionData = {
-//             prescription_details: "New Data for prescription",
-//         }
-//         const response = await axios.post('http://localhost:3000/prescription/createPrescription/3', prescriptionData, {
-//             withCredentials: true,
-//             params: doctorId
-//         });
-//         console.log(response)
-
-//     }
-//     catch(error){
-//         console.log(error)
-//     }
-// }
-
-useEffect(() => {
-    getAppointment(); // Call the function to fetch appointments when doctorId changes
-  }, [doctorId]);
+    // getting all prescription for doctor   
+  async function getAllPrescription() {
+    try {
+      const appResponse = await axios.get('http://localhost:3000/prescription/allPrescription', {
+        withCredentials: true, // This ensures cookies are sent with the request
+        params: { doctorId },
+      });
+      setPrescriptionData(appResponse.data);
+      console.log(appResponse.data); // Log the fetched appointment data
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
 
-  // <h2>Appointments:</h2>
-  //     {appointmentData.length > 0 ? (
-  //       appointmentData.map((appointment) => (
-  //         <div key={appointment.appointment_id}>
-  //           <p>Status: {appointment.appointment_status}</p>
-  //           <p>Notes: {appointment.consultation_notes}</p>
-  //           <p>Patient Name: {appointment.patient.p_name}</p> {/* Display patient name */}
-  //           <p>Patient Phone: {appointment.patient.p_phone}</p> 
-  //         </div>
-  //       ))
-  //     ) : (
-  //       <p>No appointments found.</p>
-  //     )}
+  // create prescription for patient
+  async function createPrescription(patientId:number){
+    try{
+        const prescriptionData = {
+            prescription_details: "Another new Prescription",
+        }
+        const response = await axios.post(`http://localhost:3000/prescription/createPrescription/${patientId}`, prescriptionData, {
+            withCredentials: true,
+            params: {doctorId}
+        });
+        console.log(response)
+
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+
+
+// get all patients for the doctor
+async function getPatient() {
+  try {
+    const appResponse = await axios.get('http://localhost:3000/appointments/findAllPatients', {
+      withCredentials: true, // This ensures cookies are sent with the request
+      params: { doctorId },
+    });
+    setPatientData(appResponse.data);
+    console.log(appResponse.data); // Log the fetched appointment data
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+  // create prescription for patient
+  async function updatePrescription(prescriptionId:number){
+    try{
+        const prescriptionData = {
+            prescription_details: "Updated Data",
+        }
+        const response = await axios.put(`http://localhost:3000/prescription/updatePrescription/${prescriptionId}`, prescriptionData, {
+            withCredentials: true,
+            params: {doctorId}
+        });
+        console.log(response)
+
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+
+
+  // create prescription for patient
+  async function showPatient(patientName:string){
+    try{
+
+        const response = await axios.get(`http://localhost:3000/doctor/prescriptions/${patientName}`, {
+            withCredentials: true,
+            params: {doctorId}
+        });
+        setPatientPrescription(response.data)
+        console.log(response.data)
+
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+ 
+
+
 
   // show approved and pending appointments if any
   const approvedAppointments = appointmentData.filter(appointment => appointment.appointment_status === 'Approved');
   const pendingAppointments = appointmentData.filter(appointment => appointment.appointment_status === 'Pending');
 
-    
+
   return (
     <div className='flex flex-col gap-2'>
       <h1 className='ml-8 text-2xl font-sans mt-3 font-semibold'>Welcome doctor, {doctorName}</h1>
@@ -139,8 +208,98 @@ useEffect(() => {
         </div>
       </div>
 
-      {/* Next table */}
-    
+      <div className='grid grid-cols-3 gap-3'>
+      <div className='ml-6 bg-orange-100 rounded p-5 font-serif'>
+        <h2 className='text-lg'>All Appointments:</h2>
+        {appointmentData.length > 0 ? (
+          appointmentData.map((appointment) => (
+            <div key={appointment.appointment_id} className='bg-orange-200 m-4 p-4 rounded'>
+              <p className='font-sans font-semibold'>Patient Name: {appointment.patient.p_name}</p> 
+              <p className='font-sans font-semibold'>Patient Phone: {appointment.patient.p_phone}</p> 
+              <p className='font-sans font-semibold'>Notes: {appointment.consultation_notes}</p>
+              <p className='font-sans font-semibold'>Status: {appointment.appointment_status}</p>
+            </div>
+          ))
+        ) : (
+          <p>No appointments found.</p>
+        )}
+      </div>
+
+      {/* prescription div */}
+      <div className='bg-emerald-100 p-2'>
+        <div className='m-6 bg-orange-100 rounded p-5 font-serif'>
+          <button onClick={getAllPrescription} className='m-2 bg-emerald-200 p-2'>Show All Prescription</button>
+          <h2 className='text-lg'>All Prescription:</h2>
+          {prescriptionData.length > 0 ? (
+            prescriptionData.map((prescription) => (
+              <div key={prescription.prescription_id} className='bg-orange-200 m-4 p-4 rounded'>
+                <p className='font-sans font-semibold'>Prescription ID: {prescription.prescription_id}</p> 
+                <p className='font-sans font-semibold'>Prescription Details:  {prescription.prescription_details}</p> 
+                <p className='font-sans font-semibold'>Patient Name: {prescription.patient.p_name}</p>
+                <p className='font-sans font-semibold'>Patient Phone: {prescription.patient.p_phone}</p>
+                <p className='font-sans font-semibold'>Patient Medical History: {prescription.patient.p_medical_history}</p>
+
+                <button
+                  className="text-blue-500 underline"
+                  onClick={() => createPrescription(prescription.patient.p_id)}
+                >
+                  Create Prescription
+              </button> 
+              <button
+                  className="text-blue-500 underline"
+                  onClick={() => updatePrescription(prescription.prescription_id)}
+                >
+                  Update Prescription
+              </button>                          
+            </div>
+            ))
+          ) : (
+            <p>No Prescription found.</p>
+          )}
+        </div>
+      </div>
+
+      <div className='bg-emerald-100 p-2'>
+        <div className='m-6 bg-orange-100 rounded p-5 font-serif'>
+          <button onClick={getPatient} className='m-2 bg-cyan-100 p-2'>Show All Patient</button>
+          <h2 className='text-lg'>All Patients:</h2>
+          {patientData.length > 0 ? (
+            patientData.map((patient) => (
+              <div key={patient.p_id} className='bg-orange-200 m-4 p-4 rounded'>
+                <p className='font-sans font-semibold'>Patient Name: {patient.p_name}</p> 
+                <p className='font-sans font-semibold'>Medical Details:  {patient.p_medical_history}</p> 
+                <button
+                  className="text-blue-500 underline"
+                  onClick={() => showPatient(patient.p_name)}
+                >
+                  Show Patient Prescription
+              </button>                          
+            </div>
+            ))
+          ) : (
+            <p>No Patient found.</p>
+          )}
+        </div>
+      </div>
+      </div>
+
+      <div className='grid grid-cols-2 gap-2'>
+          <div className='p-3'>
+              {patientPrescriptionData.length > 0 ? (
+          patientPrescriptionData.map((prescription, index) => (
+            <div key={`${prescription.prescription_id}-${index}`} className='bg-orange-200 m-4 p-4 rounded'>
+              <p className='font-sans font-semibold'>Prescription ID: {prescription.prescription_id}</p>
+              <p className='font-sans font-semibold'>Prescription Details: {prescription.prescription_details}</p>
+              <p className='font-sans font-semibold'>Patient Name: {prescription.patient.p_name}</p>
+              <p className='font-sans font-semibold'>Patient Phone: {prescription.patient.p_phone}</p>
+              <p className='font-sans font-semibold'>Patient Medical History: {prescription.patient.p_medical_history}</p>
+            </div>
+          ))
+        ) : (
+          <p>No prescriptions found.</p>
+        )}
+        </div>
+      </div>
     </div>
   )
 }

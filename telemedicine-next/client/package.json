@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@nextui-org/table": "^2.0.40",
+    "aos": "^2.3.4",
     "next": "14.2.12",
     "next-auth": "^4.24.7",
     "react": "^18",
