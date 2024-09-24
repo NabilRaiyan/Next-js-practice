@@ -32,13 +32,7 @@ interface Patient {
 
 // dashboard
 export default function Dashboard(){
-  const {register, handleSubmit, formState: {errors}, reset} = useForm({
-    defaultValues:
-    {
-      prescription_details: "",
-    }
-  });
-
+  
   const router = useRouter();
 
   const [doctorId, setDoctorId] = useState<string | null>(null);
