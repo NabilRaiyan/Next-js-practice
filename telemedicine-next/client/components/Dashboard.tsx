@@ -50,6 +50,7 @@ export default function Dashboard(){
 
   console.log(doctorId);
 
+  // filtering appointments data
   const [appointmentData, setAppointmentData] = useState<Appointment[]>([]); // Initialize as an empty array
   const [prescriptionData, setPrescriptionData] = useState<Prescription[]>([]); // Initialize as an empty array
   const [patientData, setPatientData] = useState<Patient[]>([]); // Initialize as an empty array
