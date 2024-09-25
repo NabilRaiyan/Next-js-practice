@@ -21,6 +21,7 @@ interface Patient {
     patient: Patient; 
   }
 
+  // Prescription Interface
   interface Prescription{
     prescription_id: number,
     prescription_details: string,
