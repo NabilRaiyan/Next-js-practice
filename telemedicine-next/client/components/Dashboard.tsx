@@ -39,6 +39,7 @@ export default function Dashboard(){
   const [doctorName, setDocName] = useState<string | null>(null);
 
 
+  // use effect hooks to get doctor id from login page
   useEffect(() => {
     const url = new URL(window.location.href);
     const id = url.searchParams.get('doctorId');
