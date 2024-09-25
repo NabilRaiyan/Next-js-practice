@@ -30,7 +30,7 @@ interface Patient {
 
   }
 
-// dashboard
+// dashboard function component
 export default function Dashboard(){
   
   const router = useRouter();
