@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-
+// Patient interface
 interface Patient {
     p_id: number,
     p_name: string;
