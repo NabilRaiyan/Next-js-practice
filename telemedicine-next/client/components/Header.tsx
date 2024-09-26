@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
+// header function
 export default function Header() {
   return (
     <div className="grid grid-cols-2 gap-3">
