@@ -9,6 +9,7 @@ export default function Login() {
 
   const router = useRouter();
 
+  // react form hooks for form validation
   const {register, handleSubmit, formState: {errors}, reset} = useForm({
     defaultValues:
     {
