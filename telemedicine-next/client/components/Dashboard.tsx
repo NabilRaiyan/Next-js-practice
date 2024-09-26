@@ -71,6 +71,7 @@ export default function Dashboard(){
     }
   }
 
+  // use effect hooks
   useEffect(() => {
       getAppointment(); 
     }, [doctorId]);
