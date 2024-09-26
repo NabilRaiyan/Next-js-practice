@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 
+// Middle section function
 export default function MiddleSection() {
   return (
     <div className='flex justify-center flex-col ml-[85px] mt-16'>
