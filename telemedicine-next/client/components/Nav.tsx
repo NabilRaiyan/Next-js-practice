@@ -7,7 +7,7 @@ interface NavProps {
   loggedInState: boolean; // Define the type for loggedInState
 }
 
-
+// Navbar function
 export default function Nav({loggedInState}: NavProps) {
 
   let isLoggedIn = loggedInState
