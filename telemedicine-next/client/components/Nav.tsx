@@ -2,9 +2,11 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
+// Navbar props interface
 interface NavProps {
   loggedInState: boolean; // Define the type for loggedInState
 }
+
 
 export default function Nav({loggedInState}: NavProps) {
 
