@@ -159,9 +159,6 @@ async function getPatient() {
         console.log(error)
     }
 }
- 
-
-
 
   // show approved and pending appointments if any
   const approvedAppointments = appointmentData.filter(appointment => appointment.appointment_status === 'Approved');
