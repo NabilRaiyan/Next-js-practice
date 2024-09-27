@@ -26,6 +26,7 @@ export default function Login() {
     d_specialize: string;
   }
 
+  // login interface obj
   interface loginInputObj{
     email: string,
     password: string
