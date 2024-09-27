@@ -32,6 +32,7 @@ export default function Login() {
     password: string
   }
 
+  // doctor data
   const [doctorData, setDoctorData] = useState<Doctor | null>(null);
   const [doctorId, setDoctorId] = useState<string | null>(null);
   
