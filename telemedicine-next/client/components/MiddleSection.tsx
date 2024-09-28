@@ -41,8 +41,6 @@ export default function MiddleSection() {
             <Image src={'/medical-3.png'} width={400} height={400} alt='medical-3' />
         </div>
       </div>
-      
-
     </div>
   )
 }
