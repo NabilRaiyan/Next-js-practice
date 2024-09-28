@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link';
 
 
-// Footer function
+// Footer fun
 export default function Footer() {
     const date = new Date().getFullYear();
 
